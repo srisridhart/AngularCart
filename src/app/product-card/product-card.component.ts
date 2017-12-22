@@ -10,13 +10,20 @@ import { ShoppingCartService } from '../shopping-cart.service';
 export class ProductCardComponent implements OnInit {
   @Input('product') product: Product;
   @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart;
   constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit() {
   }
 
   async addToCart(){
-    await this.cartService.getOrCreateCart();
+    await this.cartService.addToCart(this.product);
   }
 
+  getQuantity(){
+    if(!this.shoppingCart) return 0;
+
+    let item = this.shoppingCart.items[this.product.$key];
+    return item ? item.quantity : 0;
+  }
 }
