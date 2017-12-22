@@ -5,6 +5,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule } from '@angular/router';
 import {FormsModule} from '@angular/forms';
+//import { DataTableModule } from 'angular-2-data-table';
+//import { DataTableModule } from 'angular-4-data-table/src/index';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -27,6 +29,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
 import { CustomFormsModule } from 'ng2-validation';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import { CustomFormsModule } from 'ng2-validation';
     AdminOrdersComponent,
     LoginComponent,
     ShoppingCartComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +57,10 @@ import { CustomFormsModule } from 'ng2-validation';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     CustomFormsModule,
+    // DataTableModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      {path: 'home', component: HomeComponent},
+      {path: 'home', component: ProductsComponent},
       {path: 'login', component: LoginComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
@@ -75,7 +83,8 @@ import { CustomFormsModule } from 'ng2-validation';
     UserService,
     AdminAuthGuard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
