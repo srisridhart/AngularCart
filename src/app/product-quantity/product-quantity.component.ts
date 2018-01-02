@@ -18,7 +18,9 @@ export class ProductQuantityComponent {
   }
 
   async removeFromCart(){
+    console.log('product-quantity.component.ts - removeFromCart() - Begin');
     await this.cartService.removeFromCart(this.product);
+    console.log('product-quantity.component.ts - removeFromCart() - End');
   }
 
   
